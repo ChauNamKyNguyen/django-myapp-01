@@ -1,0 +1,15 @@
+{% if actresses %}
+    <div> Select actress: {{ selected_actress }}</div>
+    <ul>
+    {% for actress in actresses %}
+        {% if actress.name == selected_actress %}
+        <li><a href="{% url 'actress-detail' actress.slug %}">{{ actress.name }}</a></li>
+        {% else %}
+        <li class> {{ actress.name }} </li>
+        {% endif %}
+    {% endfor %}
+    </ul>
+{% else %}
+    <p> Nothing ! </p>
+{% endif %}
+

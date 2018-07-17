@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Register new user{% endblock %}
+
+{% block body_block %}
+    <h1>Register a new user</h1>
+    
+    {% if registered %}
+        <strong>Thank you for registering !</strong>
+    {% else %}
+        <strong>Please register your user</strong>
+        <form id="user_form" method="post" action="/jav/register" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- as_p to wrap each element into a <p> -->
+        <table>
+            {% for field in user_form %}
+            <tr>
+                <th valign="top" align="left">
+                    {{ field.erros }}
+                    {{ field.label_tag }}
+                </th>
+                <th align="left">
+                    <div>{{ field }}</div>
+                    <div>{{ field.help_text }}</div>
+                </th>
+            </tr>
+            {% endfor %}
+            {% for field in profile_form %}
+            <tr>
+                <th valign="top" align="left">
+                    {{ field.erros }}
+                    {{ field.label_tag }}
+                </th>
+                <th align="left">
+                    {{ field }}
+                    <div>{{ field.help_text }}</div>
+                </th>
+            </tr>
+            {% endfor %}
+        </table>
+        <!-- Submit button -->
+        <input type="submit" name="submit" value="Register" />
+        </form>
+        {% endif %}
+{% endblock %}

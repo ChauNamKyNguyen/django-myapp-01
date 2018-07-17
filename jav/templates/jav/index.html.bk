@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+{% load static %} <!-- New line -->
+
+<html>
+    <head>
+        <title>Japan Adult Movies</title>
+    </head>    
+    <body>
+        <h1>Let's sex !!!</h1>
+        
+        {% if actresses %}
+            <table>
+                <tr>
+                    <th> Name </th>
+                    <th> Like </th>
+                    <th> View </th>
+                </tr>    
+            {% for actress in actresses %}
+                <tr>
+                    <td><a href="actress/{{ actress.slug }}">{{ actress.name }}</a></td>
+                    <td>{{ actress.like }}</td>
+                    <td>{{ actress.view }}</td> 
+                </tr>            
+            {% endfor %}
+            </table>        
+        {% else %}
+            <strong>Nothing !!!</strong>
+        {% endif%}
+        
+        {% if user.is_authenticated %}
+        <img src="/jav{{ userprofile.picture.url }}" />
+        <div><a href="add_actress">Create a new actress</a></div>
+        <div><a href="restricted">Log-in user only</a></div>
+        <div><a href="logout">Log Out</a></div>
+        {% else %}
+        <img src="{% static "/images/ai-uehara-6.jpg" %}" />
+        <div><a href="register">Register</a></div>
+        <div><a href="login">Log In</a></div>
+        {% endif %}
+        
+        <div><a href="about">About</a></div>
+        
+        
+    </body>    
+</html>    

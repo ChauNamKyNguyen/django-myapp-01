@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% load jav_tags static %}
+
+{% block body_block %}
+<p>Test for filter "cut": {{ "I want to sex with Riko Ai"|cut:"Ai" }}</p>
+<p>Test for filter "lower": {{ "HERE HERE" | lower }}</p>
+<button id="about-btn" class="btn btn-primary"> Click Me - I'm Javascript on Speed</button>
+<button id="get-more" class="btn btn-primary"> Get More</button>
+
+<form method="POST" action="{% url 'add_todo' %}">
+    {% csrf_token %}
+    <input id="item" type="text" />
+    <button id="add-todo" class="btn btn-primary"> Add Todo</button>
+</form>
+{% show_actress selected="Ai Uehara" %}
+
+<script type='text/javascript'>
+    
+
+    $(document).ready( function () {
+        $("#about-btn").click( function(event){
+            alert("You clicked the button using JQuerry");
+        });        
+    });   
+    
+</script>
+
+<script src="{% static 'jav/js/jav_ajax.js' %}"></script>
+
+{% endblock %}

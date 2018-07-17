@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}VIP only !{% endblock %}
+
+{% block body_block %}
+    <h1> New movie for {{ actress_name_slug }}</h1>
+
+    <form id="movie_form" method="post" action="add_movie">
+        {% csrf_token %}
+        {% for hidden in form.hidden_fields %}
+            {{hidden }}
+        {% endfor %}
+        <table>    
+            {% for field in form.visible_fields %}
+                {{ field.errors }}
+                <tr>
+                    <td>{{ field.help_text }}</td><td>{{ field }}</td>
+                </tr>    
+            {% endfor %}
+        </table>    
+        <button type="submit" name="submit" class="btn btn-primary" >Create</button>
+    </form>
+{% endblock %}

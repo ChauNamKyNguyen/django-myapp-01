@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>Japan Adult Movie - {% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <div>
+            {% block body_block %}{% endblock %}
+        </div>
+        <hr />
+        <div>
+            <ul>
+            {% if user.is_authenticated %}
+            <img src="/jav{{ userprofile.picture.url }}" />
+            <li><a href="add_actress">Create a new actress</a></li>
+            <li><a href="restricted">For log-in user only</a></li>
+            <li><a href="logout">Log Out</a></li>
+            {% else %}
+            <li><a href="register">Register</a></li>
+            <li><a href="login">Log In</a></li>
+            {% endif %}
+            <li><a href="about">About</a></li>
+            </ul>    
+        </div>    
+    </body>
+</html>

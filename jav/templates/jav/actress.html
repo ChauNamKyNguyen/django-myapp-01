@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ actress_name }}{% endblock %}
+
+{% block body_block %}
+    <h1>{{ actress_name }}</h1>
+    {% if actress %}
+        {% if movies %}
+            {% for movie in movies %}
+                <div>{{ movie.title }}</div>
+                <div><img src = {{movie.url}} alt = {{ movie.title }} height=25% width=25%/></div>
+            {% endfor%}
+        {% else %}
+            <strong>No movie currently for {{ actress_name }} </strong>    
+        {% endif %}
+    
+        {% if user.is_authenticated %}
+            <div><a href="./{{ actress.slug }}/add_movie">Add new movie</a></div>  
+        {% endif %}            
+        
+    {% else %}
+        The actress {{ actress_name }} doesn't exist!
+    {% endif %}                
+{% endblock %}
+

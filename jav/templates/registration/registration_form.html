@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body_block %}
+    <h1>Login into your paradise !</h1>
+    <form method="post" action=".">
+        {% csrf_token %}
+        <table>
+        {{form.label_tag}}{{form}}
+        </table>
+        <input type="submit" value="Register" />        
+    </form>
+{% endblock %}
